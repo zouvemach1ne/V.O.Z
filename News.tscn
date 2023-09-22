@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbarddnrwoock"]
+
+[ext_resource type="FontFile" uid="uid://cfdaxbmxv35v2" path="res://fonts/Retro Gaming.ttf" id="1_amcnw"]
+[ext_resource type="Texture2D" uid="uid://12hsnc1bi1qe" path="res://images/bg/bg_new_analyse.jpg" id="1_ertlb"]
+[ext_resource type="Script" path="res://News.gd" id="1_mmymj"]
+[ext_resource type="Script" path="res://RichTextLabel.gd" id="2_h32vj"]
+[ext_resource type="Texture2D" uid="uid://dxwls5e2b4brx" path="res://images/bg/bg_green.png" id="3_ghl5t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_axh1j"]
+texture = ExtResource("1_ertlb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ikkg"]
+texture = ExtResource("3_ghl5t")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6g3kf"]
+
+[node name="Control" type="Control"]
+z_index = 99
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mmymj")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(0.584314, 0.584314, 0.584314, 0.341176)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_axh1j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4ikkg")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 105
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer2"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = -75
+theme_override_constants/margin_right = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(1, 0.984314, 0, 1)
+theme_override_constants/line_separation = 3
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("1_amcnw")
+theme_override_fonts/bold_font = ExtResource("1_amcnw")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6g3kf")
+bbcode_enabled = true
+text = "[b][font=res://fonts/Chomsky.otf][font_size=60][center]
+Quem tem medo do jacaré?[/center][/font_size]
+[font_size=36][center]Lago do parque Estadual sofre maior infestação de répteis já vista.[/center][/font_size][/font][/b][font_size=2]
+
+	[/font_size][font=res://fonts/OldNewspaperTypes.ttf][font_size=25]Parque estadual deixou de ser um local seguro para piqueniques e caminhadas com pets após sanguinolento assassinato de um poodle idoso pelo bando de predadores insaciáveis do parque Zé Bonifácio.[/font_size][/font]"
+tab_size = 2
+context_menu_enabled = true
+selection_enabled = true
+script = ExtResource("2_h32vj")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="meta_clicked" from="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" to="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" method="_on_meta_clicked"]
+[connection signal="meta_hover_ended" from="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" to="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" method="_on_meta_hover_ended"]
+[connection signal="meta_hover_started" from="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" to="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" method="_on_meta_hover_started"]

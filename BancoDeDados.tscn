@@ -1,0 +1,180 @@
+[gd_scene load_steps=10 format=3 uid="uid://bs1lubg5tuuih"]
+
+[ext_resource type="FontFile" uid="uid://cfdaxbmxv35v2" path="res://fonts/Retro Gaming.ttf" id="1_j41uu"]
+[ext_resource type="Script" path="res://BancoDeDados.gd" id="1_uksnw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yw8v0"]
+bg_color = Color(0.207843, 0.423529, 0.305882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.00392157, 0, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqhlu"]
+bg_color = Color(0.00392157, 0, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38glp"]
+bg_color = Color(0.215686, 0.239216, 0.239216, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_iri8g"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_8tgoh"]
+events = [SubResource("InputEventKey_iri8g")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoi1a"]
+bg_color = Color(0.660873, 0.0274979, 0.0152601, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nrtkn"]
+color = Color(1, 1, 1, 1)
+thickness = 3
+
+[node name="BancoDeDados" type="Control"]
+z_index = 99
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uksnw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yw8v0")
+
+[node name="TopBar" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqhlu")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HFlowContainer" parent="Panel/TopBar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+
+[node name="Back" type="PanelContainer" parent="Panel/TopBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_38glp")
+
+[node name="BackButton" type="Button" parent="Panel/TopBar/MarginContainer/HBoxContainer/Back"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_j41uu")
+theme_override_font_sizes/font_size = 12
+shortcut = SubResource("Shortcut_8tgoh")
+text = " < "
+flat = true
+icon_alignment = 1
+
+[node name="Forward" type="PanelContainer" parent="Panel/TopBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_38glp")
+
+[node name="ForwardButton" type="Button" parent="Panel/TopBar/MarginContainer/HBoxContainer/Forward"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_j41uu")
+theme_override_font_sizes/font_size = 12
+shortcut = SubResource("Shortcut_8tgoh")
+text = " > "
+flat = true
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Panel/TopBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Banco de dados do V.O.Z"
+
+[node name="Close" type="PanelContainer" parent="Panel/TopBar/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eoi1a")
+
+[node name="CloseButton" type="Button" parent="Panel/TopBar/MarginContainer/Close"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("1_j41uu")
+theme_override_font_sizes/font_size = 12
+shortcut = SubResource("Shortcut_8tgoh")
+text = " X "
+flat = true
+icon_alignment = 1
+
+[node name="DatabaseTabContainer" type="TabContainer" parent="Panel"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 30.0
+offset_right = 720.0
+offset_bottom = 403.0
+drag_to_rearrange_enabled = true
+
+[node name="Content" type="MarginContainer" parent="Panel/DatabaseTabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/DatabaseTabContainer/Content"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/DatabaseTabContainer/Content/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 5
+
+[node name="Label" type="Label" parent="Panel/DatabaseTabContainer/Content/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Pesquisar no banco de dados"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/DatabaseTabContainer/Content/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 130
+theme_override_constants/margin_right = 130
+
+[node name="LineEdit" type="LineEdit" parent="Panel/DatabaseTabContainer/Content/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+placeholder_text = "Pesquisar na VOZ"
+caret_blink = true
+
+[node name="HSeparator" type="HSeparator" parent="Panel/DatabaseTabContainer/Content/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_nrtkn")
+
+[node name="NewsGrid" type="GridContainer" parent="Panel/DatabaseTabContainer/Content/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Panel/TopBar/MarginContainer/Close/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="child_entered_tree" from="Panel/DatabaseTabContainer" to="." method="_on_database_tab_container_child_entered_tree"]
+[connection signal="tab_button_pressed" from="Panel/DatabaseTabContainer" to="." method="_on_database_tab_container_tab_button_pressed"]
+[connection signal="text_submitted" from="Panel/DatabaseTabContainer/Content/VBoxContainer/MarginContainer2/LineEdit" to="." method="_on_line_edit_text_submitted"]

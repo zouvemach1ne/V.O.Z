@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsapa2tahgr7v"]
+
+[ext_resource type="Script" path="res://SingleDBNews.gd" id="1_dg4oh"]
+
+[node name="News" type="Panel"]
+custom_minimum_size = Vector2(140, 120)
+script = ExtResource("1_dg4oh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Titulo" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+clip_text = true
+
+[node name="Imagem" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+expand_mode = 5
+
+[node name="Arquivo" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

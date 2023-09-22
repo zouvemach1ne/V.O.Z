@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwuru7wtg26vu"]
+
+[ext_resource type="Texture2D" uid="uid://cq764kr7356aj" path="res://images/sprites/office/office_background.png" id="1_h58fq"]
+[ext_resource type="PackedScene" uid="uid://bbarddnrwoock" path="res://News.tscn" id="2_11m50"]
+[ext_resource type="PackedScene" uid="uid://7t8pw2hdawu7" path="res://Player.tscn" id="2_t7mkm"]
+[ext_resource type="PackedScene" uid="uid://cc1p788px1xpg" path="res://Interactable.tscn" id="3_xhreh"]
+[ext_resource type="PackedScene" uid="uid://bs1lubg5tuuih" path="res://BancoDeDados.tscn" id="4_wmcms"]
+[ext_resource type="Texture2D" uid="uid://cxfu1bij85efr" path="res://images/sprites/other_char/moça.png" id="6_71lhk"]
+
+[node name="Office" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(269, 286)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_h58fq")
+
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Jimmy" parent="Node2D" instance=ExtResource("3_xhreh")]
+position = Vector2(110, 243)
+kind = "jimmy"
+
+[node name="Desk" parent="Node2D" instance=ExtResource("3_xhreh")]
+position = Vector2(89, 120)
+kind = "desk"
+
+[node name="Player" parent="Node2D" instance=ExtResource("2_t7mkm")]
+position = Vector2(278, 276)
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+anchor_mode = 0
+
+[node name="News" parent="." instance=ExtResource("2_11m50")]
+visible = false
+
+[node name="BancoDeDados" parent="." instance=ExtResource("4_wmcms")]
+visible = false
+
+[node name="Moça" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(110, 216)
+scale = Vector2(-1, 1)
+texture = ExtResource("6_71lhk")

@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd2prpkf71wi4"]
+
+[ext_resource type="Texture2D" uid="uid://12hsnc1bi1qe" path="res://images/bg/bg_new_analyse.jpg" id="1_cpkww"]
+[ext_resource type="Script" path="res://ResourceNews.gd" id="1_enr27"]
+[ext_resource type="Texture2D" uid="uid://dxwls5e2b4brx" path="res://images/bg/bg_green.png" id="2_va3md"]
+[ext_resource type="FontFile" uid="uid://cfdaxbmxv35v2" path="res://fonts/Retro Gaming.ttf" id="3_tuwi7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_axh1j"]
+texture = ExtResource("1_cpkww")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ikkg"]
+texture = ExtResource("2_va3md")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6g3kf"]
+
+[node name="Control" type="Control"]
+z_index = 99
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_enr27")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(0.584314, 0.584314, 0.584314, 0.341176)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_axh1j")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4ikkg")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 105
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer2"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = -75
+theme_override_constants/margin_right = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(1, 0.984314, 0, 1)
+theme_override_constants/line_separation = 3
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("3_tuwi7")
+theme_override_fonts/bold_font = ExtResource("3_tuwi7")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6g3kf")
+bbcode_enabled = true
+tab_size = 2
+context_menu_enabled = true
+selection_enabled = true
+
+[node name="64519" type="VScrollBar" parent="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="16914" type="VScrollBar" parent="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+max_value = 386.0
+step = 1.0
+page = 335.0
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed" flags=18]
+[connection signal="meta_clicked" from="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" to="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" method="_on_meta_clicked" flags=18]
+[connection signal="meta_hover_ended" from="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" to="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" method="_on_meta_hover_ended" flags=18]
+[connection signal="meta_hover_started" from="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" to="MarginContainer/PanelContainer/MarginContainer2/MarginContainer/RichTextLabel" method="_on_meta_hover_started" flags=18]
